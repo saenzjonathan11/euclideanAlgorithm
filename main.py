@@ -1,8 +1,3 @@
-# This is a script is designed to output
-# the gcd of two number. It used the Euclidean alogrithm
-# and outputs the list of coefficents and each step of
-# the alogrith equation in a file called GCD.txt
-
 import math
 import termtables as tt
 
@@ -12,8 +7,8 @@ def main(s):
     for i in range(0, len(s)):
         a = s[i][0]
         b = s[i][1]
-        q = math.floor(a/b)
-        r = a - q*b
+        q = math.floor(a / b)
+        r = a - q * b
         out = "{:d} = {:d}({:d}) + {:d}".format(int(a), int(b), int(q), int(r))
         # print(out)
         f.write(out + "\n")
@@ -21,10 +16,10 @@ def main(s):
         while r != 0:
             a = b
             b = r
-            q = math.floor(a/b)
-            r = a - q*b
-            out = "{:d} = {:d}({:d}) + {:d}".format(int(a), int(b),
-                        int(q), int(r))
+            q = math.floor(a / b)
+            r = a - q * b
+            out = "{:d} = {:d}({:d}) + {:d}".format(int(a), int(b), int(q),
+                                                    int(r))
             # print(out)
             f.write(out + "\n")
             ll.append(q)
@@ -42,16 +37,16 @@ def main(s):
         table2 = [[0 for i in range(col)] for j in range(rows)]
         table2[0][0] = 1
         table2[1][1] = 1
-        
+
         for row in table:
             for i in range(col):
                 if i > 1:
-                    row[i] = row[i-1]*ll[i-2] + row[i - 2]
+                    row[i] = row[i - 1] * ll[i - 2] + row[i - 2]
 
         for row in table2:
             for i in range(col):
                 if i > 1:
-                    row[i] = row[i - 2] - row[i-1]*ll[i-2]
+                    row[i] = row[i - 2] - row[i - 1] * ll[i - 2]
 
         data = table
         string = tt.to_string(
@@ -71,7 +66,17 @@ def main(s):
             padding=(0, 1),
         )
         f.write(string)
-        f.write("\n\n")
+        f.write("\ngcd(" + str(s[0][0]) + "," + str(s[0][1]) + ") = " +
+                str(b) + "\n")
+        t = col - 2
+        if t % 2 == 0:
+            f.write("Liner combination: " + str(table[0][col - 1]) + "(" +
+                    str(table[1][col - 2]) + ") - " + str(table[1][col - 1]) +
+                    "(" + str(table[0][col - 2]) + ") = 1\n\n")
+        else:
+            f.write("Liner combination: " + str(table[1][col - 1]) + "(" +
+                    str(table[0][col - 2]) + ") - " + str(table[0][col - 1]) +
+                    "(" + str(table[1][col - 2]) + ") = 1\n\n")
 
 
 if __name__ == "__main__":
@@ -80,10 +85,9 @@ if __name__ == "__main__":
     s2 = [85652, 16261]
     s3 = [139024789, 93278890]
     s4 = [16534528044, 8332745927]
-
     s = [s1, s2, s3, s4]
 
-    # use fo user input
+    # use for user input
     # num = int(input("Enter the number of sets"))
     # s = []
     # for i in range(0, num):
@@ -92,4 +96,7 @@ if __name__ == "__main__":
     #     s.append([a,b])
 
     main(s)
-
+# This is a script is designed to output
+# the gcd of two number. It used the Euclidean alogrithm
+# and outputs the list of coefficents and each step of
+# the alogrith equation in a file called GCD.txt
