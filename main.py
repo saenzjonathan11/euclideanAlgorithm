@@ -4,6 +4,7 @@
 # the alogrith equation in a file called GCD.txt
 
 import math
+import termtables as tt
 
 
 def main(s):
@@ -29,7 +30,48 @@ def main(s):
             ll.append(q)
         # print(ll)
         ll = [int(i) for i in ll]
-        f.write(str(ll) + "\n\n")
+        f.write(str(ll) + "\n")
+
+        llRow = [None, None] + ll
+        rows, col = [2, len(ll) + 2]
+
+        table = [[0 for i in range(col)] for j in range(rows)]
+        table[0][1] = 1
+        table[1][0] = 1
+
+        table2 = [[0 for i in range(col)] for j in range(rows)]
+        table2[0][0] = 1
+        table2[1][1] = 1
+        
+        for row in table:
+            for i in range(col):
+                if i > 1:
+                    row[i] = row[i-1]*ll[i-2] + row[i - 2]
+
+        for row in table2:
+            for i in range(col):
+                if i > 1:
+                    row[i] = row[i - 2] - row[i-1]*ll[i-2]
+
+        data = table
+        string = tt.to_string(
+            data,
+            header=llRow,
+            style=tt.styles.ascii_thin_double,
+            padding=(0, 1),
+        )
+        f.write(string)
+        f.write("\n\n")
+
+        data = table2
+        string = tt.to_string(
+            data,
+            header=llRow,
+            style=tt.styles.ascii_thin_double,
+            padding=(0, 1),
+        )
+        f.write(string)
+        f.write("\n\n")
 
 
 if __name__ == "__main__":
