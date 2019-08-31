@@ -5,6 +5,7 @@ import termtables as tt
 def main(s):
     f = open("GCD.txt", "w")
     for i in range(0, len(s)):
+        # print(str(i) + "here")
         a = s[i][0]
         b = s[i][1]
         q = math.floor(a / b)
@@ -39,34 +40,37 @@ def main(s):
         table2[1][1] = 1
 
         for row in table:
-            for i in range(col):
-                if i > 1:
-                    row[i] = row[i - 1] * ll[i - 2] + row[i - 2]
+            for k in range(col):
+                if k > 1:
+                    row[k] = row[k - 1] * ll[k - 2] + row[k - 2]
 
         for row in table2:
-            for i in range(col):
-                if i > 1:
-                    row[i] = row[i - 2] - row[i - 1] * ll[i - 2]
+            for k in range(col):
+                if k > 1:
+                    row[k] = row[k - 2] - row[k - 1] * ll[k - 2]
 
+        bList = [0 for k in range(col)]
+        for j in range(0, col - 1):
+            tmp = s[i][0] * table2[0][j] + s[i][1] * table2[1][j]
+            bList[j] = tmp
+            # print(str(i) + str(j))
         data = table
-        string = tt.to_string(
-            data,
-            header=llRow,
-            style=tt.styles.ascii_thin_double,
-            padding=(0, 1),
-        )
+        print(bList)
+        string = tt.to_string(data,
+                              header=llRow,
+                              style=tt.styles.thin,
+                              padding=(0, 1))
         f.write(string)
         f.write("\n\n")
 
         data = table2
-        string = tt.to_string(
-            data,
-            header=llRow,
-            style=tt.styles.ascii_thin_double,
-            padding=(0, 1),
-        )
+        data.append(bList)
+        string = tt.to_string(data,
+                              header=llRow,
+                              style=tt.styles.thin,
+                              padding=(0, 1))
         f.write(string)
-        f.write("\ngcd(" + str(s[0][0]) + "," + str(s[0][1]) + ") = " +
+        f.write("\ngcd(" + str(s[i][0]) + "," + str(s[i][1]) + ") = " +
                 str(b) + "\n")
         t = col - 2
         if t % 2 == 0:
@@ -94,9 +98,8 @@ if __name__ == "__main__":
     #     a = int(input("Enter Greatest number"))
     #     b = int(input("Enter 2nd Greatest number"))
     #     s.append([a,b])
-
     main(s)
-# This is a script is designed to output
-# the gcd of two number. It used the Euclidean alogrithm
-# and outputs the list of coefficents and each step of
-# the alogrith equation in a file called GCD.txt
+    # This is a script is designed to output
+    # the gcd of two number. It used the Euclidean alogrithm
+    # and outputs the list of coefficents and each step of
+    # the alogrith equation in a file called GCD.txt
