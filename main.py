@@ -5,13 +5,11 @@ import termtables as tt
 def main(s):
     f = open("GCD.txt", "w")
     for i in range(0, len(s)):
-        # print(str(i) + "here")
         a = s[i][0]
         b = s[i][1]
         q = math.floor(a / b)
         r = a - q * b
         out = "{:d} = {:d}({:d}) + {:d}".format(int(a), int(b), int(q), int(r))
-        # print(out)
         f.write(out + "\n")
         ll = [q]
         while r != 0:
@@ -21,10 +19,8 @@ def main(s):
             r = a - q * b
             out = "{:d} = {:d}({:d}) + {:d}".format(int(a), int(b), int(q),
                                                     int(r))
-            # print(out)
             f.write(out + "\n")
             ll.append(q)
-        # print(ll)
         ll = [int(i) for i in ll]
         f.write(str(ll) + "\n")
 
@@ -53,9 +49,7 @@ def main(s):
         for j in range(0, col - 1):
             tmp = s[i][0] * table2[0][j] + s[i][1] * table2[1][j]
             bList[j] = tmp
-            # print(str(i) + str(j))
         data = table
-        print(bList)
         string = tt.to_string(data,
                               header=llRow,
                               style=tt.styles.thin,
@@ -76,11 +70,11 @@ def main(s):
         if t % 2 == 0:
             f.write("Liner combination: " + str(table[0][col - 1]) + "(" +
                     str(table[1][col - 2]) + ") - " + str(table[1][col - 1]) +
-                    "(" + str(table[0][col - 2]) + ") = 1\n\n")
+                    "(" + str(table[0][col - 2]) + ") = " + str(b) + "\n\n")
         else:
             f.write("Liner combination: " + str(table[1][col - 1]) + "(" +
                     str(table[0][col - 2]) + ") - " + str(table[0][col - 1]) +
-                    "(" + str(table[1][col - 2]) + ") = 1\n\n")
+                    "(" + str(table[1][col - 2]) + ") = " + str(b) + "\n\n")
 
 
 if __name__ == "__main__":
