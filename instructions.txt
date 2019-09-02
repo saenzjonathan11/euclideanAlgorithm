@@ -1,0 +1,2 @@
+pip3 install termtables --user
+python3 main.py
