@@ -66,7 +66,6 @@ def main(s):
         f.write(string)
         f.write("\ngcd(" + str(s[i][0]) + "," + str(s[i][1]) + ") = " +
                 str(b) + "\n")
-        t = col - 2
         f.write("Liner combination: " + str(s[i][0]) + "(" +
                 str(table2[0][col - 2]) + ") + " + str(s[i][1]) +
                 "(" + str(table2[1][col - 2]) + ") = " + str(b) + "\n\n")
