@@ -67,14 +67,16 @@ def main(s):
         f.write("\ngcd(" + str(s[i][0]) + "," + str(s[i][1]) + ") = " +
                 str(b) + "\n")
         t = col - 2
-        if t % 2 == 0:
-            f.write("Liner combination: " + str(table[0][col - 1]) + "(" +
-                    str(table[1][col - 2]) + ") - " + str(table[1][col - 1]) +
-                    "(" + str(table[0][col - 2]) + ") = " + str(b) + "\n\n")
-        else:
-            f.write("Liner combination: " + str(table[1][col - 1]) + "(" +
-                    str(table[0][col - 2]) + ") - " + str(table[0][col - 1]) +
-                    "(" + str(table[1][col - 2]) + ") = " + str(b) + "\n\n")
+        f.write("Liner combination: " + str(s[i][0]) + "(" +
+                str(table2[0][col - 2]) + ") + " + str(s[i][1]) +
+                "(" + str(table2[1][col - 2]) + ") = " + str(b) + "\n\n")
+        flag = ((s[i][0]*table2[0][col - 2] + s[i][1]*table2[1][col - 2]) == b)
+        if not flag:
+            f.write("Linear Combination is not valid\n")
+            
+        # f.write("Liner combination: " + str(s[i][0]) + "(" +
+        #         str(table2[0][col - 2]) + ") + " + str(s[i][1]) +
+        #         "(" + str(table2[1][col - 2]) + ") = " + str(b) + "\n\n")
 
 
 if __name__ == "__main__":
@@ -93,7 +95,3 @@ if __name__ == "__main__":
     #     b = int(input("Enter 2nd Greatest number"))
     #     s.append([a,b])
     main(s)
-    # This is a script is designed to output
-    # the gcd of two number. It used the Euclidean alogrithm
-    # and outputs the list of coefficents and each step of
-    # the alogrith equation in a file called GCD.txt
