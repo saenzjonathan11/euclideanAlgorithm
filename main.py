@@ -74,11 +74,6 @@ def main(s):
         if not flag:
             f.write("Linear Combination is not valid\n")
             
-        # f.write("Liner combination: " + str(s[i][0]) + "(" +
-        #         str(table2[0][col - 2]) + ") + " + str(s[i][1]) +
-        #         "(" + str(table2[1][col - 2]) + ") = " + str(b) + "\n\n")
-
-
 if __name__ == "__main__":
     # Greatest number of LHS
     s1 = [291, 252]
