@@ -1,7 +1,6 @@
 import math
 import termtables as tt
 
-
 def main(s):
     f = open("GCD.txt", "w")
     for i in range(0, len(s)):
@@ -75,11 +74,14 @@ def main(s):
             
 if __name__ == "__main__":
     # Greatest number of LHS
+#    s1 = [291, 252]
+#    s2 = [85652, 16261]
+#    s3 = [139024789, 93278890]
+#    s4 = [16534528044, 8332745927]
+#    s = [s1, s2, s3, s4]
     s1 = [291, 252]
-    s2 = [85652, 16261]
-    s3 = [139024789, 93278890]
-    s4 = [16534528044, 8332745927]
-    s = [s1, s2, s3, s4]
+    s2 = [2426892,948047]
+    s = [s1, s2]
 
     # use for user input
     # num = int(input("Enter the number of sets"))
